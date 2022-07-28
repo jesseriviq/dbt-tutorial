@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: raw_orders
+    columns:
+      - name: id
+        tests:
+          - unique
+          - not_null
+      - name: status
+        description: Check the values of status
+        tests:
+          - accepted_values:
+                values: ['returned', 'placed', 'shipped', 'completed', 'return_pending']      
+      - name: user_id
+        tests:
+            - not_null
+      - name: order_date
+        tests:
+            - not_null
+
